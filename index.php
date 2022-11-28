@@ -89,12 +89,12 @@
                             <div>
                                 <?php
                                 require_once('config.php');
-                                $sql = "SELECT ROUND(SUM(harga), 2) as total FROM barang";
+                                $sql = "SELECT ROUND(MAX(harga), 2) as total FROM barang";
                                 $result = mysqli_query($conn, $sql);
                                 $data = mysqli_fetch_assoc($result);
                                 ?>
                                 <h3 class="text-info"><span>Rp </span><?php echo number_format($data['total']); ?></h3>
-                                <p class="mb-0">Total Harga Produk</p>
+                                <p class="mb-0">Harga Termahal</p>
                             </div>
                             <div class="align-self-center">
                                 <i class="bi bi-bar-chart-fill text-info fa-3x"></i>
