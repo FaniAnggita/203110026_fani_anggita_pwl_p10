@@ -10,6 +10,7 @@
 
 <body>
 
+    <!-- query ini berdasarkan id pada data yang akan diupdate -->
     <?php
 
     require_once('config.php');
@@ -30,6 +31,7 @@
                 Update Data
             </div>
             <div class="card-body">
+                <!-- Form untuk update data -->
                 <form method="post" action="update_data.php">
                     <input type="hidden" value="<?php echo $row['id']; ?>" name="id">
                     <div class="form-group">

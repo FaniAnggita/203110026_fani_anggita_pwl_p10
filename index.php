@@ -16,6 +16,7 @@
 <body>
 
     <div class="container mt-4">
+        <!-- Card untuk menampilkan statistik -->
         <div class="row">
             <div class="col-xl-3 col-sm-6 col-12 mb-4">
                 <div class="card">
@@ -103,6 +104,7 @@
                 </div>
             </div>
         </div>
+        <!-- Button untuk tambah data -->
         <div class="row mb-2">
             <div class="col-md-12">
                 <button type="button" id="insert-btn" class="btn btn-primary">
@@ -110,6 +112,7 @@
                 </button>
             </div>
         </div>
+        <!-- Form untuk input data baru -->
         <div class="card mb-3" id="form-body">
             <div class="card-header">
                 Input Data Baru
@@ -140,6 +143,7 @@
                 </form>
             </div>
         </div>
+        <!-- Tabel untuk menampilkan data barang -->
         <div class="row">
             <?php
             require_once('config.php');
@@ -182,21 +186,29 @@
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.js"></script>
     <script>
         jQuery(document).ready(function($) {
+            // DataTable ini merupakan plugin untuk generate search, pagination, dan sorting
             $('#tblUser').DataTable();
+
+            // menyembunyikan form
             $("#form-body").hide();
 
+            // Apabila tombol #insert-btn diklik, maka..
             $("#insert-btn").on('click', function() {
+                // elemen form ini akan ditampilkan/ disembunyikan
                 $("#form-body").toggle(500);
             });
 
+            // Jika tombol #submit diklik, maka akan terjadi proses penyimpanan data
             $("#submit").on('click', function(e) {
                 e.preventDefault();
+                // Mengambil nilai input berdasarkan id dari form
                 var nama = $('#nama').val();
                 var brand = $('#brand').val();
                 var satuan = $('#satuan').val();
                 var jumlah = $('#jumlah').val();
                 var harga = $('#harga').val();
 
+                // mengirimkan data ke insert_update.php melalui method POST
                 $.ajax({
                     url: "insert_data.php",
                     type: "POST",
@@ -207,6 +219,7 @@
                         jumlah: jumlah,
                         harga: harga
                     },
+                    // Jika data berhasil dikirimkan, maka fungsi ini akan dijlanka
                     success: function(data) {
                         alert("Data berhasil disimpan!");
                         $("#form-body").hide();
